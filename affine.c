@@ -1,35 +1,45 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
 #include<string.h>
-void main()
-{
-	int key1=7,key2=5;
-	int t,i,j,k,c,dkey;
-	char plaintext[20],cipher[20],decrypt[20];
-	printf("Enter a string having only capital letters:");
-	gets(plaintext);
-	
-	for(i=0;i<strlen(plaintext);i++)
-	{
-		t=((((int)plaintext[i]-97)*key1))%26;
-		c=(t+key2)%26;
-		cipher[i]=(char)(c+97);
-	}
-	puts(cipher);
-	
-	for(j=1;j<26;j++)
-	{
-		if(((j*key1) % 26) == 1){
-			dkey = j;
-		}
-	}
-	
-	for(k=0;k<strlen(cipher);k++)
-	{
-		t=((int)(cipher[i])-key2)%26;
-		c=(t*dkey)%26;
-		decrypt[k]=(char)(c+97);
-	}
-	puts(decrypt);
-	
-}
+    int findinverse(int a);
+    void main ()
+    {
+        char pt[50],ct[50];
+        int k1,k2,i,e[50],d[50];
+
+        printf("Enter the plain txt ");
+        scanf("%s",pt);
+
+        printf("Enter first key ");
+        scanf("%d",&k1);
+
+        printf("Enter the second key ");
+        scanf("%d",&k2);
+
+        printf("ENCRYPTION ");
+        for(i=0;i<strlen(pt);i++)
+        {
+            e[i]=(int)(pt[i]-65);
+            e[i]=(e[i]*k1)%26;
+            e[i]=(e[i]+k2)%26;
+
+        }
+        for(i=0;i<strlen(pt);i++)
+            printf("%c",e[i]+65);
+
+        printf("\nDECRYPTION ");
+        for(i=0;i<strlen(pt);i++)
+        {d[i]=(e[i]-k2)%26;
+            d[i]=(((d[i]*findinverse(k1))%26) + 26 ) % 26;
+        }
+
+        for(i=0;i<strlen(pt);i++)
+            printf("%c",d[i]+65);
+    }
+    int findinverse(int a)
+    {
+        int m=26;
+        a = a%m;
+        for (int x=1; x<m; x++)
+            if ((a*x) % m == 1)
+                return x;
+    }
