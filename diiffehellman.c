@@ -5,25 +5,30 @@ void main()
 {
 	int q=11; //prime number is must
 	int alpha; 
-	int x,y=1; 
+	int x,y=1;
+	int i,j,k; 
 	uint8_t table[q-1];
 
 	//finding alpha
-	for (int i = 2; i < (q); i++)
+	for (i = 2; i < (q); i++)
 	{
 		x=i;
-		for(int j=2;j<q;j++)
+		for(j=2;j<q;j++)
 		{
 			x=(x*y)%q;
-			if (table[x]==true)
+			if (table[x]==1)
 			{
 				continue;
 			}
 			else
 			{
-				table[x]=true;
+				table[x]=1;
 				y=x;
 			}
+		}
+		for(k=0;k<q;k++)
+		{
+			table[k]=0;
 		}
 		if(j==q)
 		{
@@ -31,7 +36,5 @@ void main()
 			break;
 		}
 	}
-
-
-
+	printf("Alpha:%d\n",alpha );
 }
