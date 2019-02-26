@@ -16,9 +16,9 @@ int modInverse(int a, int m)
 } 
 
 //Power function
-int power(int base,int exponent)
+int power(int base, int exponent)
 {
-	long long result=1;
+	long long int result=1;
 	while(exponent!=0)
 	{
 		result*=base;
@@ -30,9 +30,9 @@ int power(int base,int exponent)
 void main()
 {
 	//Declaring variables
-	int p=257,q=263,plaintext,encryption[8],decryption[8];
+	int p=3,q=5,plaintext,encryption[8],decryption[8];
 	int e,d,n,funcn;
-	int P,D;
+	long long int P,D;
 	char ptext[8];
 	
 	printf("Enter plaintext:\n");
@@ -63,14 +63,15 @@ void main()
 
 		//Encryption
 		P=power(plaintext,e);
-		pe=(int)(P)%(int)n;
+		printf("Power value:%lld\n",P);
+		int pe=(int)(P)%n;
 		encryption[i]=(int)pe;
 		printf("Encrypted value:%d\n",encryption[i]);
 
 		//Decryption
-		D=(pow((double)encryption[i],(double)d));
-		printf("D:%d\n",D);
-		double de=(int)(D)%(int)n;
+		D=power(encryption[i],d);
+		printf("D:%lld\n",D);
+		long long int de= D%n;
 		decryption[i]=(int)de;
 		printf("Decrypted value:%d\n",decryption[i]);
 		printf("\n");
