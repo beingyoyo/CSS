@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include<math.h>
 #include<string.h>
+
+//Finding the modular inverse
 int modInverse(int a, int m) 
 { 
     a = a%m; 
@@ -12,12 +14,26 @@ int modInverse(int a, int m)
        } 
     }
 } 
+
+//Power function
+int power()
+{
+	int base,exponent;
+	long long result=1;
+	while(exponent!=0)
+	{
+		result*=base;
+		exponent--;
+	}
+	return (result);
+}
+
 void main()
 {
 	//Declaring variables
 	int p=257,q=263,plaintext,encryption[8],decryption[8];
-	double e,d,n,funcn;
-	double P,D;
+	int e,d,n,funcn;
+	int P,D;
 	char ptext[8];
 	
 	printf("Enter plaintext:\n");
@@ -28,7 +44,7 @@ void main()
 	printf("Phi of n:%d\n",funcn);
 
 	// Calculating the public key
-	for (int i = 2; i < (int)funcn; i++)
+	for (int i = 2; i < funcn; i++)
 	{
 		if((int)funcn%i!=0)
 		{
@@ -39,7 +55,7 @@ void main()
 	}
 
 	// Calculating Private Key
-	d=modInverse(e,(int)funcn);
+	d=modInverse(e,funcn);
 	printf("Private key:%d\n",d);
 
 	for (int i = 0; i < strlen(ptext); i++)
