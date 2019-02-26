@@ -63,15 +63,3 @@ void main()
 	D=D%n;
 	printf("Decrypted value:%d\n",D);
 }
-
-/*
-	OUTPUT
-Enter two prime nos: 3 5
-Enter a number to be encrypted and decrypted:4
-Phi of n:8
-Public Key:3
-Private Key:3
-Encrypted value:4
-Decrypted value:4
-*/
-
