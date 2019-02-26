@@ -62,8 +62,7 @@ void main()
 		plaintext=(int)(ptext[i]);
 
 		//Encryption
-		P=(pow((double)plaintext,e));
-		P=power(plaintext,e)
+		P=power(plaintext,e);
 		pe=(int)(P)%(int)n;
 		encryption[i]=(int)pe;
 		printf("Encrypted value:%d\n",encryption[i]);
