@@ -31,11 +31,11 @@ void main()
 	int plaintext;
 	int P,D;
 
-	printf("Enter two prime nos:%d\n");
+	printf("Enter two prime nos:\n");
 	scanf("%d %d",&p,&q);
 
-	printf("Enter a number to be encrypted and decrypted:%d\n");
-	scanf("%d",&plaintext)
+	printf("Enter a number to be encrypted and decrypted:\n");
+	scanf("%d",&plaintext);
 	n=p*q;
 	phi=(p-1)*(q-1); //Phi Of n
 	printf("Phi of n:%d\n",phi);
