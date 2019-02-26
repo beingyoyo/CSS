@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<math.h>
 #include<stdint.h>
 int power(int base, int exponent)
 {
@@ -76,3 +75,15 @@ void main()
 
 	printf("Key of A:%d\nKey of B:%d",Ka,Kb);
 }
+
+/*
+OUTPUT
+Enter a prime number:11
+Alpha:2
+Private Key of A:8
+Private Key of B:4
+Public Key of A:3
+Public Key of B:5
+Key of A:4
+Key of B:4
+*/
