@@ -16,9 +16,8 @@ int modInverse(int a, int m)
 } 
 
 //Power function
-int power()
+int power(int base,int exponent)
 {
-	int base,exponent;
 	long long result=1;
 	while(exponent!=0)
 	{
@@ -64,7 +63,8 @@ void main()
 
 		//Encryption
 		P=(pow((double)plaintext,e));
-		double pe=(int)(P)%(int)n;
+		P=power(plaintext,e)
+		pe=(int)(P)%(int)n;
 		encryption[i]=(int)pe;
 		printf("Encrypted value:%d\n",encryption[i]);
 
