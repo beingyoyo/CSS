@@ -1,6 +1,0 @@
-void main()
-{
-	int 7a = 3 , b = 4 , c ;
-	c = a + b ;
-	printf ( "%d" , c ) ;
-}
