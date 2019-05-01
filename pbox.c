@@ -33,6 +33,5 @@ void main()
             row = (bit - 1) / 8;
             printf("%d", (str[row] & 1 << (7-(bit-1) % 8)) >> (7 - (bit -1) % 8));
         }
-        printf("\n");
     }
 }
