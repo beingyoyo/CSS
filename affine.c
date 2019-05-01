@@ -95,7 +95,8 @@ void encrypt(char *str, int k1, int k2)
 	char encrypted_string[strlen(str)];
 	printf("\nEncrypted string:");
 
-	for(i=0;i<strlen(str);i++){
+	for(i=0;i<strlen(str);i++)
+	{
 		ch = tolower(str[i]) - 'a';	
 		// printf("%d\n",ch);
 		ch = (ch * k1 + k2) % 26 + 'a';
