@@ -1,36 +1,67 @@
-#include<stdio.h>
-#include<stdint.h>
-int bit_length(int n)
+#include <stdio.h>
+#include <string.h>
+
+void lengthBits(int len)
 {
-	int count=0;
-	while(n>0)
-	{
-		count++;
-		n=n >> 1;
-	}
-	return count;
+    unsigned long int length;
+    length = len * 8;
+    printf("\nPadding Length Bits:\n");
+    unsigned long int i;
+    for (i = 1ull << 63; i > 0; i = i >> 1)
+    {
+        (length & i) ? printf("1"):printf("0");
+    }
+    printf("\n");
 }
 
-int get_plen(int mfield_len, int lfield_len)
+void padding(int len)
 {
-	int n=448-(mfield_len+lfield_len)%512;
-	return n;
+    int padding_len, i;
+    padding_len = (448 - len*8) % 512;
+    printf("\nPadding Bits: %d\n", padding_len);
+    for (i = 1; i <= padding_len; i++)
+    {
+        if (i == 1)
+        {
+            printf("1");
+        }
+        else
+        {
+            printf("0");
+        }
+        if (i % 8 == 0)
+        {
+            printf(" ");
+        }
+    }
+    printf("\n");
+    lengthBits(len);
+}
+
+void asciiToBin(char *str)
+{
+    int i, j, len, x;
+    len = strlen(str);
+    for (i = 0; i < len; i++)
+    {
+        x = 0x80;
+        for (j = 0; j < 8; j++)
+        {
+            (str[i] & x) ? printf("1"):printf("0");
+            x = x >> 1;
+        }
+        if (j % 8 == 0)
+        {
+            printf("  ");
+        }
+    }
+    printf("\n");
+    padding(len);
 }
 
 void main()
 {
-	//Reading the input
-	long int message;
-	int mfield_len, lfield_len, total_len, padding_len;
-
-	printf("Enter message:");
-	scanf("%ld",&message);
-
-	//Calculating lengths
-	mfield_len=bit_length(message);
-	lfield_len=bit_length((uint64_t)mfield_len);
-
-	//Calculating the padding required
-	padding_len=get_plen(mfield_len, lfield_len);
-	printf("Padding Length:%d\n", padding_len);
+    char input[100];
+    gets(input);
+    asciiToBin(input);
 }
